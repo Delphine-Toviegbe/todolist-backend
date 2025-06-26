@@ -22,41 +22,106 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+
 ## Description
+
+Todolist - Backend
+
+Backend de l'application Todo List réalisée en **NestJS**, connectée à une base de données **MySQL** via **Prisma**.
+
+Choix technique
+
+- **NestJS** : Framework Node.js pour structurer proprement les modules, contrôleurs, services, etc.
+- **Prisma** : ORM pour interagir efficacement avec la base de données MySQL.
+- **MySQL** : SGBD relationnel utilisé pour stocker les tâches.
+
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
+# 1. Cloner le projet :
+   ```bash
+   git clone https://github.com/Delphine-Toviegbe/todolist-backend.git
+   cd todolist-backend
+  ```
+# 2.Installer les dépendances :
+
 ```bash
-$ yarn install
+  yarn install
+  # ou
+  npm install  
 ```
+
+# 3.Créer la base de données MySQL (si non existante).
+
+  Utilisez l'image Docker MySQL fournie ici : https://github.com/hdmnetwork/mysql5.7
+    Suivez les instructions dans le fichier install.md du dépôt.
+
+  Une fois le conteneur lancé, assurez-vous que la variable DATABASE_URL dans .env est correctement définie
+
+# 4. Appliquer les migrations Prisma :
+
+  yarn prisma migrate dev
+  # ou
+  npx prisma migrate dev
+
+# 5. Lancer le serveur NestJS :
+
+  yarn start:dev
+  # ou
+  npm run start:dev
 
 ## Running the app
 
 ```bash
-# development
-$ yarn run start
+  # development
+  $ yarn run start
 
-# watch mode
-$ yarn run start:dev
+  # watch mode
+  $ yarn run start:dev
 
-# production mode
-$ yarn run start:prod
+  # production mode
+  $ yarn run start:prod
 ```
 
 ## Test
 
 ```bash
-# unit tests
-$ yarn run test
+  # unit tests
+  $ yarn run test
 
-# e2e tests
-$ yarn run test:e2e
+  # e2e tests
+  $ yarn run test:e2e
 
-# test coverage
-$ yarn run test:cov
+  # test coverage
+  $ yarn run test:cov
 ```
+
+Fonctionnalités
+
+    Récupération de toutes les tâches (GET /tasks)
+
+    Création d'une tâche (POST /tasks)
+
+    Suppression d'une tâche (DELETE /tasks/:id)
+
+    Mise à jour d'une tâche (PUT /tasks/:id)
+
+## Structure du projet
+
+  src/
+  ├── Controllers/
+  │   └── TaskController.ts
+  ├── Repositories/
+  │   └── TaskRepository.ts
+  ├── UseCase/
+  │   ├── DeleteTask/
+  │   ├── GetAllTasks/
+  │   └── SaveTask/
+  ├── AppModule.ts
+  ├── PrismaService.ts
+  └── main.ts
 
 ## Support
 
