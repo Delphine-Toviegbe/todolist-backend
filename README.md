@@ -62,15 +62,19 @@ Choix technique
 
 # 4. Appliquer les migrations Prisma :
 
+```bash
   yarn prisma migrate dev
   # ou
   npx prisma migrate dev
+```
 
 # 5. Lancer le serveur NestJS :
 
+```bash
   yarn start:dev
   # ou
   npm run start:dev
+```
 
 ## Running the app
 
