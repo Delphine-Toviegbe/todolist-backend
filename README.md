@@ -2,73 +2,69 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+<p align="center">
+  <i>Backend de l'application Todo List réalisée avec NestJS, Prisma et MySQL</i>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+
+---
+
+##  Description
+
+Ce dépôt contient l’API backend pour une application de gestion de tâches (Todo List).  
+L’application est développée en **NestJS**, connectée à une base de données **MySQL** via **Prisma**.
+
+---
+
+##  Choix techniques
+
+- **NestJS** : Framework Node.js orienté architecture modulaire, facilitant la maintenabilité et la séparation des responsabilités via des modules, services et contrôleurs.
+- **Prisma** : ORM moderne, typé, rapide à mettre en place et bien intégré à TypeScript. Il facilite les migrations et les requêtes.
+- **MySQL** : Base de données relationnelle robuste et facilement intégrable avec Prisma.
+
+---
+
+##  Difficultés rencontrées
+
+   - **Compréhension de la structure existante** : le projet étant déjà structuré, une première étape a consisté à analyser l'architecture (Controllers, UseCase, Repositories, etc.) pour intégrer les nouvelles fonctionnalités sans casser la logique existante.
+
+  - **Problèmes de dépendances** : des erreurs lors de l’installation de certains packages ont nécessité un nettoyage des modules et des ajustements (versions Prisma, conflits).
+
+  - **Connexion à la base de données** : le paramétrage de l’image Docker MySQL a demandé quelques essais pour faire correspondre les variables .env et l’environnement de développement.
 
 
-## Description
-
-Todolist - Backend
-
-Backend de l'application Todo List réalisée en **NestJS**, connectée à une base de données **MySQL** via **Prisma**.
-
-Choix technique
-
-- **NestJS** : Framework Node.js pour structurer proprement les modules, contrôleurs, services, etc.
-- **Prisma** : ORM pour interagir efficacement avec la base de données MySQL.
-- **MySQL** : SGBD relationnel utilisé pour stocker les tâches.
-
-
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
 ## Installation
 
-# 1. Cloner le projet :
-   ```bash
-   git clone https://github.com/Delphine-Toviegbe/todolist-backend.git
-   cd todolist-backend
-  ```
-# 2.Installer les dépendances :
+### 1. Cloner le projet
 
+```bash
+git clone https://github.com/Delphine-Toviegbe/todolist-backend.git
+cd todolist-backend
+```
+2. Installer les dépendances
 ```bash
   yarn install
   # ou
-  npm install  
+  npm install
 ```
 
-# 3.Créer la base de données MySQL (si non existante).
+3. Créer la base de données MySQL
 
-  Utilisez l'image Docker MySQL fournie ici : https://github.com/hdmnetwork/mysql5.7
-    Suivez les instructions dans le fichier install.md du dépôt.
+Utilisez l'image Docker fournie ici : https://github.com/hdmnetwork/mysql5.7
+  Suivez les étapes du fichier install.md.
 
-  Une fois le conteneur lancé, assurez-vous que la variable DATABASE_URL dans .env est correctement définie
+Vérifiez que la variable DATABASE_URL dans le fichier .env pointe vers la bonne base :
 
-# 4. Appliquer les migrations Prisma :
+DATABASE_URL="mysql://root:root@localhost:3306/todo"
 
+4. Appliquer les migrations Prisma
 ```bash
   yarn prisma migrate dev
   # ou
   npx prisma migrate dev
 ```
 
-# 5. Lancer le serveur NestJS :
+5. Lancer le serveur NestJS
 
 ```bash
   yarn start:dev
@@ -76,67 +72,56 @@ Choix technique
   npm run start:dev
 ```
 
-## Running the app
+API disponible
+Méthode	Endpoint	Description
+GET	/tasks	Récupère toutes les tâches
+POST	/tasks	Crée une nouvelle tâche
+PUT	/tasks/:id	Modifie une tâche existante
+DELETE	/tasks/:id	Supprime une tâche
 
-```bash
-  # development
-  $ yarn run start
 
-  # watch mode
-  $ yarn run start:dev
+Structure du projet
 
-  # production mode
-  $ yarn run start:prod
-```
+src/
+├── Controllers/
+│   └── TaskController.ts       # Gère les routes HTTP
+├── Repositories/
+│   └── TaskRepository.ts       # Abstraction base de données
+├── UseCase/                    # Logique métier
+│   ├── DeleteTask/
+│   ├── GetAllTasks/
+│   └── SaveTask/
+├── AppModule.ts                # Module principal
+├── PrismaService.ts            # Configuration de Prisma
+└── main.ts                     # Entrée de l’application
 
-## Test
+🧪 Tests
 
 ```bash
   # unit tests
-  $ yarn run test
+  yarn test
+
 
   # e2e tests
-  $ yarn run test:e2e
+  yarn test:e2e
 
-  # test coverage
-  $ yarn run test:cov
+  # couverture
+  yarn test:cov
 ```
 
-Fonctionnalités
+Fonctionnalités implémentées
 
-    Récupération de toutes les tâches (GET /tasks)
+    Récupération des tâches (GET /tasks)
 
-    Création d'une tâche (POST /tasks)
+    Création de tâche (POST /tasks)
 
-    Suppression d'une tâche (DELETE /tasks/:id)
+    Mise à jour d’une tâche (PUT /tasks/:id)
 
-    Mise à jour d'une tâche (PUT /tasks/:id)
+    Suppression d’une tâche (DELETE /tasks/:id)
 
-## Structure du projet
+Remarques
 
-  src/
-  ├── Controllers/
-  │   └── TaskController.ts
-  ├── Repositories/
-  │   └── TaskRepository.ts
-  ├── UseCase/
-  │   ├── DeleteTask/
-  │   ├── GetAllTasks/
-  │   └── SaveTask/
-  ├── AppModule.ts
-  ├── PrismaService.ts
-  └── main.ts
+    Vous pouvez insérer des tâches manuellement dans la base avant de lancer le frontend : elles seront affichées automatiquement grâce au fetch implémenté.
 
-## Support
+    Le backend expose des endpoints REST simples, à consommer avec un client HTTP ou depuis le frontend React.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
