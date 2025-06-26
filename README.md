@@ -81,20 +81,20 @@ DELETE	/tasks/:id	Supprime une tâche
 
 
 Structure du projet
-
-src/
-├── Controllers/
-│   └── TaskController.ts       # Gère les routes HTTP
-├── Repositories/
-│   └── TaskRepository.ts       # Abstraction base de données
-├── UseCase/                    # Logique métier
-│   ├── DeleteTask/
-│   ├── GetAllTasks/
-│   └── SaveTask/
-├── AppModule.ts                # Module principal
-├── PrismaService.ts            # Configuration de Prisma
-└── main.ts                     # Entrée de l’application
-
+```
+  src/
+  ├── Controllers/
+  │   └── TaskController.ts       # Gère les routes HTTP
+  ├── Repositories/
+  │   └── TaskRepository.ts       # Abstraction base de données
+  ├── UseCase/                    # Logique métier
+  │   ├── DeleteTask/
+  │   ├── GetAllTasks/
+  │   └── SaveTask/
+  ├── AppModule.ts                # Module principal
+  ├── PrismaService.ts            # Configuration de Prisma
+  └── main.ts                     # Entrée de l’application
+```
 🧪 Tests
 
 ```bash
